@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Poll;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class PollsController extends Controller
 {
@@ -15,8 +16,14 @@ class PollsController extends Controller
     {
         return response()->json(Poll::find($id), 200);
     }
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $poll = Poll::create($request->all());
-        return response() -> json($poll, 201);
+        return response()->json($poll, 201);
+    }
+    public function update(Request $request, Poll $poll)
+    {
+        $poll->update($request->all());
+        return response()->json($poll, 200);
     }
 }
