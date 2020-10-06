@@ -43,6 +43,8 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\Logging::class,
+            'httpHeaders:Come Work For US!',
+
         ],
     ];
 
@@ -64,5 +66,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'httpHeaders' => \App\Http\Middleware\HttpHeaders::class,
     ];
 }
