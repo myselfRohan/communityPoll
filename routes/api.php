@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//polls
 Route::get('polls', 'PollsController@index');
 Route::get('polls/{id}', 'PollsController@show');
 Route::post('polls', 'PollsController@store');
 Route::put('polls/{poll}', 'PollsController@update');
 Route::delete('polls/{poll}', 'PollsController@delete');
 Route::any('errors', 'PollsController@errors');
+//questions
+Route::apiResource('questions', 'QuestionController');
